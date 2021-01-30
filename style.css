@@ -13,3 +13,38 @@ h2 {
 p {
 	color: whitesmoke;
 }
+/* #countryPage {
+	display: none;
+}
+#otherPage1 {
+	display: none;
+}
+#otherPage2 {
+	display: none;
+}
+#ccRepPage {
+	display: none;
+}
+#shltrsUsaPage {
+	display: none;
+}
+#shltrsOtherPage {
+	display: none;
+}
+#artistPage {
+	display: none;
+} */
+
+.hidden {
+	display: none;
+}
+.show {
+	display: block;
+}
+
+#btnRestart {
+	background-color: teal;
+	float: left;
+}
+.ccButton {
+}
