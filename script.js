@@ -1,5 +1,7 @@
 let mode = '';
 const primaryElementId = '#startPage';
+const countryPicklstId = 'countries';
+const territoryPicklstId = 'territories';
 const secnodaryElmntIds = {
 	countryPageId: '#countryPage',
 	otherPage1Id: '#otherPage1',
@@ -7,16 +9,16 @@ const secnodaryElmntIds = {
 	ccRepPageId: '#ccRepPage',
 	shltrsUsaPageId: '#shltrsUsaPage',
 	shltrsOtherPageId: '#shltrsOtherPage',
-	artistPageId: '#artistPage'
+	artistPageId: '#artistPage',
+	territoryPicklstId: '#' + territoryPicklstId
 };
-const countryPicklstId = 'countries';
-const territoryPicklstId = 'territories';
 const pathways = [
 	{
 		initiatorId: '#btnMat',
 		hideElement: primaryElementId,
 		showElement: secnodaryElmntIds.countryPageId,
 		setMode: 'material',
+		routeMode: '',
 		eventType: 'click'
 	},
 	{
@@ -24,6 +26,7 @@ const pathways = [
 		hideElement: primaryElementId,
 		showElement: secnodaryElmntIds.countryPageId,
 		setMode: 'shelters',
+		routeMode: '',
 		eventType: 'click'
 	},
 	{
@@ -31,6 +34,7 @@ const pathways = [
 		hideElement: primaryElementId,
 		showElement: secnodaryElmntIds.countryPageId,
 		setMode: 'artist',
+		routeMode: '',
 		eventType: 'click'
 	},
 	{
@@ -38,31 +42,79 @@ const pathways = [
 		hideElement: primaryElementId,
 		showElement: secnodaryElmntIds.otherPage1Id,
 		setMode: 'other',
+		routeMode: '',
 		eventType: 'click'
 	},
 	{
 		initiatorId: '#btnOthr1',
 		hideElement: secnodaryElmntIds.otherPage1Id,
 		showElement: secnodaryElmntIds.otherPage2Id,
-		setMode: 'other',
+		setMode: '',
+		routeMode: 'other',
 		eventType: 'click'
 	},
 	{
 		initiatorId: '#btnPrtnr',
 		hideElement: secnodaryElmntIds.otherPage1Id,
 		showElement: secnodaryElmntIds.countryPageId,
-		setMode: 'partner',
+		setMode: 'material',
+		routeMode: 'other',
 		eventType: 'click'
 	},
 
-	//countries regions
-	// TODO country picklist shows and hides postcode
+	// country picklist shows postcode picklist if USA and UK
+	//1: country -> BDM
 	{
 		initiatorId: '#' + countryPicklstId,
-		territorytorId: '#' + territoryPicklstId,
 		hideElement: secnodaryElmntIds.countryPageId,
 		showElement: secnodaryElmntIds.ccRepPageId,
 		setMode: '',
+		routeMode: 'material',
+		eventType: 'input'
+	},
+	//2 country-> territory picklist
+	{
+		initiatorId: '#' + countryPicklstId,
+		hideElement: '#' + countryPicklstId,
+		showElement: territoryPicklstId,
+		setMode: '',
+		routeMode: 'material',
+		eventType: 'input'
+	},
+	//1.2 territory -> BDM
+	{
+		initiatorId: '#' + territoryPicklstId,
+		hideElement: secnodaryElmntIds.countryPageId,
+		showElement: secnodaryElmntIds.ccRepPageId,
+		setMode: '',
+		routeMode: 'material',
+		eventType: 'input'
+	},
+	//3 Country -> Shelter (Other)
+	{
+		initiatorId: '#' + countryPicklstId,
+		hideElement: secnodaryElmntIds.countryPageId,
+		showElement: secnodaryElmntIds.shltrsOtherPageId,
+		setMode: '',
+		routeMode: 'shelters',
+		eventType: 'input'
+	},
+	//3.1 Territory -> Shelter (USA)
+	{
+		initiatorId: '#' + territoryPicklstId,
+		hideElement: secnodaryElmntIds.countryPageId,
+		showElement: secnodaryElmntIds.shltrsOtherPageId,
+		setMode: '',
+		routeMode: 'shelters',
+		eventType: 'input'
+	},
+	// 4 - design
+	{
+		initiatorId: '#' + countryPicklstId,
+		hideElement: secnodaryElmntIds.countryPageId,
+		showElement: secnodaryElmntIds.artistPageId,
+		setMode: '',
+		routeMode: 'artist',
 		eventType: 'input'
 	}
 ];
@@ -70,8 +122,8 @@ const pathways = [
 const reps = [
 	{
 		name: 'Phill Greer',
-		countries: [ 'United States', 'Canada' ],
-		territories: [ 'TX' ],
+		countries: [ 'United States' ],
+		territories: [ 'TX', 'CA' ],
 		title: 'Test',
 		phone: '123456789',
 		email: 'phill.greer@concretecanvas.com',
@@ -80,6 +132,7 @@ const reps = [
 	{
 		name: 'Darren Hughes',
 		countries: [ 'India', 'Russian Federation' ],
+		territories: [],
 		phone: '123456789',
 		email: 'darren.hughes@concretecanvas.com',
 		photoUrl: ''
@@ -87,6 +140,7 @@ const reps = [
 	{
 		name: 'Luis Rego',
 		countries: [ 'Brazil', 'Chile' ],
+		territories: [],
 		phone: '123456789',
 		email: 'luis.rego@concretecanvas.com',
 		photoUrl: ''
@@ -94,6 +148,7 @@ const reps = [
 	{
 		name: 'Samer Hasan',
 		countries: [],
+		territories: [],
 		phone: '123456789',
 		email: 'samer.hasan@concretecanvas.com',
 		photoUrl: ''
@@ -101,6 +156,7 @@ const reps = [
 	{
 		name: 'Simon Lester',
 		countries: [],
+		territories: [],
 		phone: '123456789',
 		email: 'simon.lester@concretecanvas.com',
 		photoUrl: ''
@@ -108,6 +164,7 @@ const reps = [
 	{
 		name: 'Nick Kastoumis',
 		countries: [],
+		territories: [],
 		phone: '123456789',
 		email: 'nick.kastoumis@concretecanvas.com',
 		photoUrl: ''
@@ -115,6 +172,7 @@ const reps = [
 	{
 		name: 'Michael Chong',
 		countries: [],
+		territories: [],
 		phone: '123456789',
 		email: 'michael.chong@concretecanvas.com',
 		photoUrl: ''
@@ -122,6 +180,7 @@ const reps = [
 	{
 		name: 'Mark Griffiths',
 		countries: [],
+		territories: [],
 		phone: '123456789',
 		email: 'mark.griffiths@concretecanvas.com',
 		photoUrl: ''
@@ -129,20 +188,22 @@ const reps = [
 	{
 		name: 'Flavio Cosma',
 		countries: [],
+		territories: [],
 		phone: '123456789',
 		email: 'flavio.cosma@concretecanvas.com',
 		photoUrl: ''
 	},
 	{
 		name: 'Ryan McKeever',
-		countries: [],
+		countries: [ 'United Kingdom' ],
+		territories: [],
 		phone: '123456789',
 		email: 'ryan.mckeever@concretecanvas.com',
 		photoUrl: ''
 	},
 	{
 		name: 'Luke Valvona',
-		countries: [],
+		countries: [ 'United Kingdom' ],
 		territories: [ 'CB', 'OF' ],
 		phone: '123456789',
 		email: 'luke.valvona@concretecanvas.com',
@@ -150,7 +211,7 @@ const reps = [
 	},
 	{
 		name: 'Gavin Adams',
-		countries: [],
+		countries: [ 'United Kingdom' ],
 		territories: [ 'BM', 'NN' ],
 		phone: '123456789',
 		email: 'gavin.adams@concretecanvas.com',
@@ -158,13 +219,14 @@ const reps = [
 	},
 	{
 		name: 'Laurie Cummings',
-		countries: [],
+		countries: [ 'United Kingdom' ],
 		territories: [ 'CF', 'SA' ],
 		phone: '123456789',
 		email: 'laurie.cummings@concretecanvas.com',
 		photoUrl: ''
 	}
 ];
+const cntrsWthTrrtrs = [];
 
 initiate(pathways, reps);
 
@@ -172,7 +234,10 @@ function reset(els) {
 	for (let el in els) {
 		hideEl(document.querySelector(els[el]));
 	}
+	let ctrPcklst = document.querySelector('#' + countryPicklstId);
 	showEl(document.querySelector(primaryElementId));
+	showEl(ctrPcklst);
+	ctrPcklst.selectedIndex = 0;
 	mode = '';
 }
 
@@ -184,22 +249,20 @@ function showEl(el) {
 }
 
 function initiate(paths, reps) {
-	makeCtryPcklst(reps, countryPicklstId);
-	makeCtryPcklst(reps, territoryPicklstId);
+	makeCntrsWthTrrtrs(reps, cntrsWthTrrtrs);
 
-	// const myPicklist = document.querySelector('#' + countryPicklstId);
+	picklistMaker(reps, countryPicklstId);
+	picklistMaker(reps, territoryPicklstId);
+	for (cntr of cntrsWthTrrtrs) {
+		picklistMaker(cntrsWthTrrtrs, Object.keys(cntr));
+	}
+
 	for (let path of paths) {
 		document.querySelector(path.initiatorId).addEventListener(path.eventType, (e) => {
-			//running depends on mode
-			console.log(e.detail);
-			//also depends on country - ADD NEW ARRAY OF COUNTRY-TERRITORY linkages, then add IF statement
-			//!!NOTE COUNTRY paths indicate use different INITIATORID
-			//EVENT SAYS: IF this is a country from the territory paired list, use this path,
-
-			//this does not run if country -> Region / State
-			hideEl(document.querySelector(path.hideElement));
-			showEl(document.querySelector(path.showElement));
-			//this runs always
+			if (mode === path.routeMode) {
+				hideEl(document.querySelector(path.hideElement));
+				showEl(document.querySelector(path.showElement));
+			}
 			mode = path.setMode || mode;
 		});
 	}
@@ -209,28 +272,56 @@ function initiate(paths, reps) {
 	reset(secnodaryElmntIds);
 }
 
-function makeCtryPcklst(reps, arrayKey) {
+//add arraykeys array as args, and try to make this formula run only once through reps array,
+//creating 3 picklists: Countries, UK(territories), US(territories)
+function picklistMaker(objs, arrayKey) {
 	const countrypg = document.querySelector(secnodaryElmntIds.countryPageId);
 	const select = document.createElement('select');
 	select.setAttribute('id', arrayKey);
+	select.setAttribute('class', 'mypicklist');
+
 	countrypg.append(select);
 	const newPicklist = document.querySelector('#' + arrayKey);
 	let blankOption = document.createElement('option');
 	blankOption.setAttribute('value', '');
 	blankOption.innerText = 'PLEASE SELECT';
 	newPicklist.append(blankOption);
+	let chckDuplicatSet = new Set();
 
-	reps.forEach((element) => {
-		if (element[arrayKey]) {
-			element[arrayKey].forEach((el) => {
-				let myOption = document.createElement('option');
-				myOption.setAttribute('value', element.name);
-				myOption.innerText = el;
-				newPicklist.append(myOption);
+	objs.forEach((obj) => {
+		if (obj[arrayKey]) {
+			obj[arrayKey].forEach((el) => {
+				if (!chckDuplicatSet.has(el)) {
+					let myOption = document.createElement('option');
+					myOption.setAttribute('value', el);
+					myOption.innerText = el;
+					newPicklist.append(myOption);
+				}
+				chckDuplicatSet.add(el);
 			});
 		}
 	});
+}
 
-	// let el =
-	// rerurn el;
+function idfriendly(str) {
+	return str.toLowerCase().split(' ').join('');
+}
+function makeCntrsWthTrrtrs(reps, cntrsWthTrrtrs) {
+	let tempObj = {};
+	reps.forEach((rep) => {
+		if (rep.territories[0]) {
+			if (rep.countries.length > 1) {
+				throw new Error(`rep ${rep.name} nas multiple countries and subterritories`);
+			}
+			let thiscountry = idfriendly(rep.countries[0]);
+			if (tempObj[thiscountry]) {
+				tempObj[thiscountry].push(...rep.territories);
+			} else {
+				tempObj[thiscountry] = rep.territories;
+			}
+		}
+	});
+	for (key of Object.keys(tempObj)) {
+		cntrsWthTrrtrs.push({ [key]: tempObj[key] });
+	}
 }
