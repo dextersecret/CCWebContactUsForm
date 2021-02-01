@@ -1,7 +1,7 @@
 let mode = '';
 const primaryElementId = '#startPage';
 const countryPicklstId = 'countries';
-const territoryPicklstId = 'territories';
+// const territoryPicklstId = 'territories';
 const secnodaryElmntIds = {
 	countryPageId: '#countryPage',
 	otherPage1Id: '#otherPage1',
@@ -9,8 +9,8 @@ const secnodaryElmntIds = {
 	ccRepPageId: '#ccRepPage',
 	shltrsUsaPageId: '#shltrsUsaPage',
 	shltrsOtherPageId: '#shltrsOtherPage',
-	artistPageId: '#artistPage',
-	territoryPicklstId: '#' + territoryPicklstId
+	artistPageId: '#artistPage'
+	// territoryPicklstId: '#' + territoryPicklstId
 };
 const pathways = [
 	{
@@ -73,23 +73,23 @@ const pathways = [
 		eventType: 'input'
 	},
 	//2 country-> territory picklist
-	{
-		initiatorId: '#' + countryPicklstId,
-		hideElement: '#' + countryPicklstId,
-		showElement: territoryPicklstId,
-		setMode: '',
-		routeMode: 'material',
-		eventType: 'input'
-	},
-	//1.2 territory -> BDM
-	{
-		initiatorId: '#' + territoryPicklstId,
-		hideElement: secnodaryElmntIds.countryPageId,
-		showElement: secnodaryElmntIds.ccRepPageId,
-		setMode: '',
-		routeMode: 'material',
-		eventType: 'input'
-	},
+	// {
+	// 	initiatorId: '#' + countryPicklstId,
+	// 	hideElement: '#' + countryPicklstId,
+	// 	showElement: territoryPicklstId,
+	// 	setMode: '',
+	// 	routeMode: 'material',
+	// 	eventType: 'input'
+	// },
+	// //1.2 territory -> BDM
+	// {
+	// 	initiatorId: '#' + territoryPicklstId,
+	// 	hideElement: secnodaryElmntIds.countryPageId,
+	// 	showElement: secnodaryElmntIds.ccRepPageId,
+	// 	setMode: '',
+	// 	routeMode: 'material',
+	// 	eventType: 'input'
+	// },
 	//3 Country -> Shelter (Other)
 	{
 		initiatorId: '#' + countryPicklstId,
@@ -100,14 +100,14 @@ const pathways = [
 		eventType: 'input'
 	},
 	//3.1 Territory -> Shelter (USA)
-	{
-		initiatorId: '#' + territoryPicklstId,
-		hideElement: secnodaryElmntIds.countryPageId,
-		showElement: secnodaryElmntIds.shltrsOtherPageId,
-		setMode: '',
-		routeMode: 'shelters',
-		eventType: 'input'
-	},
+	// {
+	// 	initiatorId: '#' + territoryPicklstId,
+	// 	hideElement: secnodaryElmntIds.countryPageId,
+	// 	showElement: secnodaryElmntIds.shltrsOtherPageId,
+	// 	setMode: '',
+	// 	routeMode: 'shelters',
+	// 	eventType: 'input'
+	// },
 	// 4 - design
 	{
 		initiatorId: '#' + countryPicklstId,
@@ -118,19 +118,19 @@ const pathways = [
 		eventType: 'input'
 	}
 ];
-
 const reps = [
 	{
 		name: 'Phill Greer',
+		title: 'Test',
 		countries: [ 'United States' ],
 		territories: [ 'TX', 'CA' ],
-		title: 'Test',
 		phone: '123456789',
 		email: 'phill.greer@concretecanvas.com',
 		photoUrl: ''
 	},
 	{
 		name: 'Darren Hughes',
+		title: 'Test',
 		countries: [ 'India', 'Russian Federation' ],
 		territories: [],
 		phone: '123456789',
@@ -139,6 +139,7 @@ const reps = [
 	},
 	{
 		name: 'Luis Rego',
+		title: 'Test',
 		countries: [ 'Brazil', 'Chile' ],
 		territories: [],
 		phone: '123456789',
@@ -147,6 +148,7 @@ const reps = [
 	},
 	{
 		name: 'Samer Hasan',
+		title: 'Test',
 		countries: [],
 		territories: [],
 		phone: '123456789',
@@ -155,6 +157,7 @@ const reps = [
 	},
 	{
 		name: 'Simon Lester',
+		title: 'Test',
 		countries: [],
 		territories: [],
 		phone: '123456789',
@@ -163,6 +166,7 @@ const reps = [
 	},
 	{
 		name: 'Nick Kastoumis',
+		title: 'Test',
 		countries: [],
 		territories: [],
 		phone: '123456789',
@@ -171,6 +175,7 @@ const reps = [
 	},
 	{
 		name: 'Michael Chong',
+		title: 'Test',
 		countries: [],
 		territories: [],
 		phone: '123456789',
@@ -179,6 +184,7 @@ const reps = [
 	},
 	{
 		name: 'Mark Griffiths',
+		title: 'Test',
 		countries: [],
 		territories: [],
 		phone: '123456789',
@@ -187,6 +193,7 @@ const reps = [
 	},
 	{
 		name: 'Flavio Cosma',
+		title: 'Test',
 		countries: [],
 		territories: [],
 		phone: '123456789',
@@ -195,6 +202,7 @@ const reps = [
 	},
 	{
 		name: 'Ryan McKeever',
+		title: 'Test',
 		countries: [ 'United Kingdom' ],
 		territories: [],
 		phone: '123456789',
@@ -203,6 +211,7 @@ const reps = [
 	},
 	{
 		name: 'Luke Valvona',
+		title: 'Test',
 		countries: [ 'United Kingdom' ],
 		territories: [ 'CB', 'OF' ],
 		phone: '123456789',
@@ -211,6 +220,7 @@ const reps = [
 	},
 	{
 		name: 'Gavin Adams',
+		title: 'Test',
 		countries: [ 'United Kingdom' ],
 		territories: [ 'BM', 'NN' ],
 		phone: '123456789',
@@ -219,6 +229,7 @@ const reps = [
 	},
 	{
 		name: 'Laurie Cummings',
+		title: 'Test',
 		countries: [ 'United Kingdom' ],
 		territories: [ 'CF', 'SA' ],
 		phone: '123456789',
@@ -227,18 +238,43 @@ const reps = [
 	}
 ];
 const cntrsWthTrrtrs = [];
+const picklistIds = [];
+let activeRep = {
+	name: 'Name',
+	title: 'ttl',
+	phone: 'phone',
+	email: 'email',
+	photoUrl: 'photo'
+};
 
 initiate(pathways, reps);
 
-function reset(els) {
+function reset(els, picklistIds) {
 	for (let el in els) {
 		hideEl(document.querySelector(els[el]));
 	}
-	let ctrPcklst = document.querySelector('#' + countryPicklstId);
 	showEl(document.querySelector(primaryElementId));
-	showEl(ctrPcklst);
-	ctrPcklst.selectedIndex = 0;
+
+	picklistIds.forEach((lst) => {
+		let myPcklst = document.querySelector('#' + lst.id);
+		myPcklst.selectedIndex = 0;
+		myPcklst.style.display = lst.defaultdisplay;
+	});
+	// let ctrPcklst = document.querySelector('#' + countryPicklstId);
+	// showEl(ctrPcklst);
 	mode = '';
+}
+function setrep(rep) {
+	document.querySelector('#repname').innerText = rep.name;
+	document.querySelector('#reptitle').innerText = rep.title;
+	document.querySelector('#repphone').innerText = rep.phone;
+	document.querySelector('#repemail').innerText = rep.email;
+	document
+		.querySelector('#repimage')
+		.setAttribute(
+			'src',
+			'https://images.unsplash.com/photo-1559190394-df5a28aab5c5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80'
+		);
 }
 
 function hideEl(el) {
@@ -251,14 +287,31 @@ function showEl(el) {
 function initiate(paths, reps) {
 	makeCntrsWthTrrtrs(reps, cntrsWthTrrtrs);
 
-	picklistMaker(reps, countryPicklstId);
-	picklistMaker(reps, territoryPicklstId);
+	picklistMaker(reps, countryPicklstId, 'block');
+	// picklistMaker(reps, territoryPicklstId);
 	for (cntr of cntrsWthTrrtrs) {
-		picklistMaker(cntrsWthTrrtrs, Object.keys(cntr));
+		//FIGURE OUT A WAY TO ADD A PATH WITH INITIATORID, HIDE AND SHOWID, EVTTYPE
+		picklistMaker(cntrsWthTrrtrs, Object.keys(cntr), 'none');
 	}
 
 	for (let path of paths) {
 		document.querySelector(path.initiatorId).addEventListener(path.eventType, (e) => {
+			//if country, search for country
+			let slctdOptn = e.target.value;
+			if (slctdOptn) {
+				//find in raps by e.target.id
+				// update activeRep
+
+				activeRep =
+					reps.filter((rep) => {
+						return rep.territories.includes(slctdOptn);
+					})[0] ||
+					reps.filter((rep) => {
+						return rep.countries.includes(slctdOptn);
+					})[0];
+				setrep(activeRep);
+			}
+
 			if (mode === path.routeMode) {
 				hideEl(document.querySelector(path.hideElement));
 				showEl(document.querySelector(path.showElement));
@@ -267,14 +320,16 @@ function initiate(paths, reps) {
 		});
 	}
 	document.querySelector('#btnRestart').addEventListener('click', function() {
-		reset(secnodaryElmntIds);
+		reset(secnodaryElmntIds, picklistIds);
 	});
-	reset(secnodaryElmntIds);
+	reset(secnodaryElmntIds, picklistIds);
+	//SET DEFAULT BDM? OR OFFICE NUM?
 }
 
 //add arraykeys array as args, and try to make this formula run only once through reps array,
 //creating 3 picklists: Countries, UK(territories), US(territories)
-function picklistMaker(objs, arrayKey) {
+function picklistMaker(objs, arrayKey, display) {
+	picklistIds.push({ id: arrayKey, defaultdisplay: display });
 	const countrypg = document.querySelector(secnodaryElmntIds.countryPageId);
 	const select = document.createElement('select');
 	select.setAttribute('id', arrayKey);
@@ -317,7 +372,7 @@ function makeCntrsWthTrrtrs(reps, cntrsWthTrrtrs) {
 			if (tempObj[thiscountry]) {
 				tempObj[thiscountry].push(...rep.territories);
 			} else {
-				tempObj[thiscountry] = rep.territories;
+				tempObj[thiscountry] = [ ...rep.territories ];
 			}
 		}
 	});
