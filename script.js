@@ -1,5 +1,4 @@
 let mode = '';
-let destination = '';
 const primaryElementId = '#startPage';
 const countryPicklstId = 'countries';
 // const territoryPicklstId = 'territories';
@@ -13,7 +12,6 @@ const secnodaryElmntIds = {
 	artistPageId: '#artistPage'
 	// territoryPicklstId: '#' + territoryPicklstId
 };
-const routesToReps = [ 'material', 'partner' ];
 const pathways = [
 	{
 		initiatorId: '#btnMat',
@@ -21,7 +19,6 @@ const pathways = [
 		showElement: secnodaryElmntIds.countryPageId,
 		setMode: 'material',
 		routeMode: '',
-		country: '',
 		eventType: 'click'
 	},
 	{
@@ -30,7 +27,6 @@ const pathways = [
 		showElement: secnodaryElmntIds.countryPageId,
 		setMode: 'shelters',
 		routeMode: '',
-		country: '',
 		eventType: 'click'
 	},
 	{
@@ -39,7 +35,6 @@ const pathways = [
 		showElement: secnodaryElmntIds.countryPageId,
 		setMode: 'artist',
 		routeMode: '',
-		country: '',
 		eventType: 'click'
 	},
 	{
@@ -48,7 +43,6 @@ const pathways = [
 		showElement: secnodaryElmntIds.otherPage1Id,
 		setMode: 'other',
 		routeMode: '',
-		country: '',
 		eventType: 'click'
 	},
 	{
@@ -63,9 +57,8 @@ const pathways = [
 		initiatorId: '#btnPrtnr',
 		hideElement: secnodaryElmntIds.otherPage1Id,
 		showElement: secnodaryElmntIds.countryPageId,
-		setMode: 'partner',
+		setMode: 'material',
 		routeMode: 'other',
-		country: '',
 		eventType: 'click'
 	},
 
@@ -77,16 +70,6 @@ const pathways = [
 		showElement: secnodaryElmntIds.ccRepPageId,
 		setMode: '',
 		routeMode: 'material',
-		country: '',
-		eventType: 'input'
-	},
-	{
-		initiatorId: '#' + countryPicklstId,
-		hideElement: secnodaryElmntIds.countryPageId,
-		showElement: secnodaryElmntIds.ccRepPageId,
-		setMode: '',
-		routeMode: 'partner',
-		country: '',
 		eventType: 'input'
 	},
 	//2 country-> territory picklist
@@ -114,7 +97,6 @@ const pathways = [
 		showElement: secnodaryElmntIds.shltrsOtherPageId,
 		setMode: '',
 		routeMode: 'shelters',
-		country: '',
 		eventType: 'input'
 	},
 	//3.1 Territory -> Shelter (USA)
@@ -133,7 +115,6 @@ const pathways = [
 		showElement: secnodaryElmntIds.artistPageId,
 		setMode: '',
 		routeMode: 'artist',
-		country: '',
 		eventType: 'input'
 	}
 ];
@@ -269,10 +250,11 @@ let activeRep = {
 initiate(pathways, reps);
 
 function reset(els, picklistIds) {
-	showEl(document.querySelector(primaryElementId));
 	for (let el in els) {
 		hideEl(document.querySelector(els[el]));
 	}
+	showEl(document.querySelector(primaryElementId));
+
 	picklistIds.forEach((lst) => {
 		let myPcklst = document.querySelector('#' + lst.id);
 		myPcklst.selectedIndex = 0;
@@ -281,15 +263,18 @@ function reset(els, picklistIds) {
 	// let ctrPcklst = document.querySelector('#' + countryPicklstId);
 	// showEl(ctrPcklst);
 	mode = '';
-	destination = '';
 }
-
-function setRepCardValues(rep) {
+function setrep(rep) {
 	document.querySelector('#repname').innerText = rep.name;
 	document.querySelector('#reptitle').innerText = rep.title;
 	document.querySelector('#repphone').innerText = rep.phone;
 	document.querySelector('#repemail').innerText = rep.email;
-	document.querySelector('#repimage').setAttribute('src', rep.photoUrl);
+	document
+		.querySelector('#repimage')
+		.setAttribute(
+			'src',
+			'https://images.unsplash.com/photo-1559190394-df5a28aab5c5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80'
+		);
 }
 
 function hideEl(el) {
@@ -301,79 +286,22 @@ function showEl(el) {
 
 function initiate(paths, reps) {
 	makeCntrsWthTrrtrs(reps, cntrsWthTrrtrs);
+
 	picklistMaker(reps, countryPicklstId, 'block');
 	// picklistMaker(reps, territoryPicklstId);
 	for (cntr of cntrsWthTrrtrs) {
 		//FIGURE OUT A WAY TO ADD A PATH WITH INITIATORID, HIDE AND SHOWID, EVTTYPE
-		let objId = Object.keys(cntr)[0];
-		picklistMaker(cntrsWthTrrtrs, objId, 'none');
-		for (route of routesToReps) {
-			//1 - pre path
-			makeNewPath('#' + countryPicklstId, '#' + countryPicklstId, '#' + objId, '', route, 'input');
-			//2 - post path
-			makeNewPath(
-				'#' + objId,
-				secnodaryElmntIds.countryPageId,
-				secnodaryElmntIds.ccRepPageId,
-				'',
-				route,
-				'input'
-			);
-		}
-		// sheltr pre territory;
-		makeNewPath(
-			'#' + countryPicklstId,
-			'#' + countryPicklstId,
-			'#' + objId,
-			'',
-			'shelters',
-			'input',
-			'United States'
-		);
-		// sheltr post territory;
-		makeNewPath(
-			'#' + objId,
-			secnodaryElmntIds.countryPageId,
-			secnodaryElmntIds.shltrsOtherPageId,
-			'',
-			'shelters',
-			'input'
-		);
-		makeNewPath(
-			'#' + objId,
-			secnodaryElmntIds.countryPageId,
-			secnodaryElmntIds.shltrsUsaPageId,
-			'',
-			'shelters',
-			'input',
-			'United States'
-		);
-		// artist pre territory;
-		makeNewPath('#' + countryPicklstId, '#' + countryPicklstId, '#' + objId, '', 'artist', 'input');
-		// artist post territory;
-		makeNewPath(
-			'#' + objId,
-			secnodaryElmntIds.countryPageId,
-			secnodaryElmntIds.artistPageId,
-			'',
-			'artist',
-			'input'
-		);
+		picklistMaker(cntrsWthTrrtrs, Object.keys(cntr), 'none');
 	}
-	//add to paths
-	makePathListeners(paths);
-	document.querySelector('#btnRestart').addEventListener('click', function() {
-		reset(secnodaryElmntIds, picklistIds);
-	});
-	reset(secnodaryElmntIds, picklistIds);
-	//SET DEFAULT BDM? OR OFFICE NUM?
-}
 
-function makePathListeners(paths) {
 	for (let path of paths) {
 		document.querySelector(path.initiatorId).addEventListener(path.eventType, (e) => {
+			//if country, search for country
 			let slctdOptn = e.target.value;
 			if (slctdOptn) {
+				//find in raps by e.target.id
+				// update activeRep
+
 				activeRep =
 					reps.filter((rep) => {
 						return rep.territories.includes(slctdOptn);
@@ -381,44 +309,21 @@ function makePathListeners(paths) {
 					reps.filter((rep) => {
 						return rep.countries.includes(slctdOptn);
 					})[0];
-				setRepCardValues(activeRep);
-				destination = slctdOptn || destination;
+				setrep(activeRep);
 			}
-			console.log('path.country: ', path.country);
-			if (
-				cntrsWthTrrtrs.filter((obj) => {
-					return obj[idfriendly(slctdOptn)];
-				}).length > 0 ||
-				(slctdOptn && slctdOptn === destination)
-			) {
-				console.log(00);
-				if (path.showElement === '#' + idfriendly(slctdOptn)) {
-					console.log('destination: ', destination);
-					console.log('slctdOptn: ', slctdOptn);
-					console.log(0);
-					if (destination === slctdOptn) {
-						console.log(1);
-						hideEl(document.querySelector(path.hideElement));
-						showEl(document.querySelector(path.showElement));
-						console.log('show: ', path.showElement);
-					} else if (mode === path.routeMode) {
-						console.log(2);
-						hideEl(document.querySelector(path.hideElement));
-						showEl(document.querySelector(path.showElement));
-						console.log('show: ', path.showElement);
-					}
-				}
-				// else if() {
 
-				// }
-			} else if (mode === path.routeMode) {
-				console.log(3);
+			if (mode === path.routeMode) {
 				hideEl(document.querySelector(path.hideElement));
 				showEl(document.querySelector(path.showElement));
 			}
 			mode = path.setMode || mode;
 		});
 	}
+	document.querySelector('#btnRestart').addEventListener('click', function() {
+		reset(secnodaryElmntIds, picklistIds);
+	});
+	reset(secnodaryElmntIds, picklistIds);
+	//SET DEFAULT BDM? OR OFFICE NUM?
 }
 
 //add arraykeys array as args, and try to make this formula run only once through reps array,
@@ -474,17 +379,4 @@ function makeCntrsWthTrrtrs(reps, cntrsWthTrrtrs) {
 	for (key of Object.keys(tempObj)) {
 		cntrsWthTrrtrs.push({ [key]: tempObj[key] });
 	}
-}
-
-function makeNewPath(initiatorId, hideElement, showElement, setMode, routeMode, eventType, country) {
-	let newPath = {
-		initiatorId,
-		hideElement,
-		showElement,
-		setMode,
-		routeMode,
-		eventType,
-		country
-	};
-	pathways.push(newPath);
 }
