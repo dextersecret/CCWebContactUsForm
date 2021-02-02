@@ -1,6 +1,17 @@
-let mode = '';
+let mode = [];
 const primaryElementId = '#startPage';
 const countryPicklstId = 'countries';
+const activeEvtValues = [
+	'material',
+	'shelters',
+	'info',
+	'artist',
+	'other',
+	'other1',
+	'partner',
+	'United States',
+	'United Kingdom'
+];
 // const territoryPicklstId = 'territories';
 const secnodaryElmntIds = {
 	countryPageId: '#countryPage',
@@ -17,48 +28,42 @@ const pathways = [
 		initiatorId: '#btnMat',
 		hideElement: primaryElementId,
 		showElement: secnodaryElmntIds.countryPageId,
-		setMode: 'material',
-		routeMode: '',
+		routeModes: [ 'material' ],
 		eventType: 'click'
 	},
 	{
 		initiatorId: '#btnShltr',
 		hideElement: primaryElementId,
 		showElement: secnodaryElmntIds.countryPageId,
-		setMode: 'shelters',
-		routeMode: '',
+		routeModes: [ 'shelters' ],
 		eventType: 'click'
 	},
 	{
 		initiatorId: '#btnArt',
 		hideElement: primaryElementId,
 		showElement: secnodaryElmntIds.countryPageId,
-		setMode: 'artist',
-		routeMode: '',
+		routeModes: [ 'artist' ],
 		eventType: 'click'
 	},
 	{
 		initiatorId: '#btnOthr',
 		hideElement: primaryElementId,
 		showElement: secnodaryElmntIds.otherPage1Id,
-		setMode: 'other',
-		routeMode: '',
+		routeModes: [ 'other' ],
 		eventType: 'click'
 	},
 	{
 		initiatorId: '#btnOthr1',
 		hideElement: secnodaryElmntIds.otherPage1Id,
 		showElement: secnodaryElmntIds.otherPage2Id,
-		setMode: '',
-		routeMode: 'other',
+		routeModes: [ 'other', 'other1' ],
 		eventType: 'click'
 	},
 	{
 		initiatorId: '#btnPrtnr',
 		hideElement: secnodaryElmntIds.otherPage1Id,
 		showElement: secnodaryElmntIds.countryPageId,
-		setMode: 'material',
-		routeMode: 'other',
+		routeModes: [ 'other', 'partner' ],
 		eventType: 'click'
 	},
 
@@ -68,8 +73,8 @@ const pathways = [
 		initiatorId: '#' + countryPicklstId,
 		hideElement: secnodaryElmntIds.countryPageId,
 		showElement: secnodaryElmntIds.ccRepPageId,
-		setMode: '',
-		routeMode: 'material',
+
+		routeModes: [ 'material', 'shelters', 'partner', 'artist' ],
 		eventType: 'input'
 	},
 	//2 country-> territory picklist
@@ -77,8 +82,8 @@ const pathways = [
 	// 	initiatorId: '#' + countryPicklstId,
 	// 	hideElement: '#' + countryPicklstId,
 	// 	showElement: territoryPicklstId,
-	// 	setMode: '',
-	// 	routeMode: 'material',
+	//
+	// 	routeModes: 'material',
 	// 	eventType: 'input'
 	// },
 	// //1.2 territory -> BDM
@@ -86,8 +91,8 @@ const pathways = [
 	// 	initiatorId: '#' + territoryPicklstId,
 	// 	hideElement: secnodaryElmntIds.countryPageId,
 	// 	showElement: secnodaryElmntIds.ccRepPageId,
-	// 	setMode: '',
-	// 	routeMode: 'material',
+	//
+	// 	routeModes: 'material',
 	// 	eventType: 'input'
 	// },
 	//3 Country -> Shelter (Other)
@@ -95,28 +100,28 @@ const pathways = [
 		initiatorId: '#' + countryPicklstId,
 		hideElement: secnodaryElmntIds.countryPageId,
 		showElement: secnodaryElmntIds.shltrsOtherPageId,
-		setMode: '',
-		routeMode: 'shelters',
+		routeModes: [ 'shelters' ],
 		eventType: 'input'
-	},
+	}
 	//3.1 Territory -> Shelter (USA)
 	// {
 	// 	initiatorId: '#' + territoryPicklstId,
 	// 	hideElement: secnodaryElmntIds.countryPageId,
 	// 	showElement: secnodaryElmntIds.shltrsOtherPageId,
-	// 	setMode: '',
-	// 	routeMode: 'shelters',
+	//
+	// 	routeModes: 'shelters',
 	// 	eventType: 'input'
 	// },
 	// 4 - design
-	{
-		initiatorId: '#' + countryPicklstId,
-		hideElement: secnodaryElmntIds.countryPageId,
-		showElement: secnodaryElmntIds.artistPageId,
-		setMode: '',
-		routeMode: 'artist',
-		eventType: 'input'
-	}
+
+	//#################make UK, initiator = territoryPicklist
+	// {
+	// 	initiatorId: '#' + countryPicklstId,
+	// 	hideElement: secnodaryElmntIds.countryPageId,
+	// 	showElement: secnodaryElmntIds.artistPageId,
+	// 	routeModes: ['artist'],
+	// 	eventType: 'input'
+	// }
 ];
 const reps = [
 	{
@@ -262,7 +267,7 @@ function reset(els, picklistIds) {
 	});
 	// let ctrPcklst = document.querySelector('#' + countryPicklstId);
 	// showEl(ctrPcklst);
-	mode = '';
+	mode = [];
 }
 function setRepCardValues(rep) {
 	document.querySelector('#repname').innerText = rep.name;
@@ -282,10 +287,11 @@ function showEl(el) {
 function initiate(paths, reps) {
 	makeCntrsWthTrrtrs(reps, cntrsWthTrrtrs);
 
-	picklistMaker(reps, countryPicklstId, 'block');
+	picklistMaker(reps, countryPicklstId, 'block'); //making countries pcklst
 	// picklistMaker(reps, territoryPicklstId);
 	//WIP################################################
 	for (cntr of cntrsWthTrrtrs) {
+		//making territories picklists
 		let objId = Object.keys(cntr)[0];
 		picklistMaker(cntrsWthTrrtrs, objId, 'none');
 		// for (route of routesToReps) {
@@ -303,6 +309,9 @@ function initiate(paths, reps) {
 		// }
 		// sheltr pre territory;
 	}
+	// UK [material, partner, artist]
+	// US [material, partner, design]
+
 	//WIP################################################
 	//add to paths
 	makePathListeners(paths);
@@ -316,27 +325,33 @@ function initiate(paths, reps) {
 function makePathListeners(paths) {
 	for (let path of paths) {
 		document.querySelector(path.initiatorId).addEventListener(path.eventType, (e) => {
-			//if country, search for country
 			let slctdOptn = e.target.value;
-			if (slctdOptn) {
-				//find in raps by e.target.id
-				// update activeRep
+			console.log('e:', slctdOptn);
 
-				activeRep =
-					reps.filter((rep) => {
-						return rep.territories.includes(slctdOptn);
-					})[0] ||
-					reps.filter((rep) => {
-						return rep.countries.includes(slctdOptn);
-					})[0];
-				setRepCardValues(activeRep);
+			if (activeEvtValues.includes(slctdOptn)) {
+				mode.push(slctdOptn);
+				//find in raps by e.target.id
+
+				// update activeRep
+				//###############LATER
+				// activeRep =
+				// 	reps.filter((rep) => {
+				// 		return rep.territories.includes(slctdOptn);
+				// 	})[0] ||
+				// 	reps.filter((rep) => {
+				// 		return rep.countries.includes(slctdOptn);
+				// 	})[0];
+				// setRepCardValues(activeRep);
 			}
 
-			if (mode === path.routeMode) {
+			if (
+				mode.every((md) => {
+					return path.routeModes.includes(md);
+				})
+			) {
 				hideEl(document.querySelector(path.hideElement));
 				showEl(document.querySelector(path.showElement));
 			}
-			mode = path.setMode || mode;
 		});
 	}
 }
@@ -396,13 +411,13 @@ function makeCntrsWthTrrtrs(reps, cntrsWthTrrtrs) {
 	}
 }
 
-function makeNewPath(initiatorId, hideElement, showElement, setMode, routeMode, eventType, country) {
+function makeNewPath(initiatorId, hideElement, showElement, setMode, routeModes, eventType, country) {
 	let newPath = {
 		initiatorId,
 		hideElement,
 		showElement,
 		setMode,
-		routeMode,
+		routeModes,
 		eventType,
 		country
 	};
