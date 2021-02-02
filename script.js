@@ -250,10 +250,10 @@ let activeRep = {
 initiate(pathways, reps);
 
 function reset(els, picklistIds) {
+	showEl(document.querySelector(primaryElementId));
 	for (let el in els) {
 		hideEl(document.querySelector(els[el]));
 	}
-	showEl(document.querySelector(primaryElementId));
 
 	picklistIds.forEach((lst) => {
 		let myPcklst = document.querySelector('#' + lst.id);
@@ -264,17 +264,12 @@ function reset(els, picklistIds) {
 	// showEl(ctrPcklst);
 	mode = '';
 }
-function setrep(rep) {
+function setRepCardValues(rep) {
 	document.querySelector('#repname').innerText = rep.name;
 	document.querySelector('#reptitle').innerText = rep.title;
 	document.querySelector('#repphone').innerText = rep.phone;
 	document.querySelector('#repemail').innerText = rep.email;
-	document
-		.querySelector('#repimage')
-		.setAttribute(
-			'src',
-			'https://images.unsplash.com/photo-1559190394-df5a28aab5c5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80'
-		);
+	document.querySelector('#repimage').setAttribute('src', rep.photoUrl);
 }
 
 function hideEl(el) {
@@ -289,11 +284,36 @@ function initiate(paths, reps) {
 
 	picklistMaker(reps, countryPicklstId, 'block');
 	// picklistMaker(reps, territoryPicklstId);
+	//WIP################################################
 	for (cntr of cntrsWthTrrtrs) {
-		//FIGURE OUT A WAY TO ADD A PATH WITH INITIATORID, HIDE AND SHOWID, EVTTYPE
-		picklistMaker(cntrsWthTrrtrs, Object.keys(cntr), 'none');
+		let objId = Object.keys(cntr)[0];
+		picklistMaker(cntrsWthTrrtrs, objId, 'none');
+		// for (route of routesToReps) {
+		// 	//1 - pre path
+		// 	makeNewPath('#' + countryPicklstId, '#' + countryPicklstId, '#' + objId, '', route, 'input');
+		// 	//2 - post path
+		// 	makeNewPath(
+		// 		'#' + objId,
+		// 		secnodaryElmntIds.countryPageId,
+		// 		secnodaryElmntIds.ccRepPageId,
+		// 		'',
+		// 		route,
+		// 		'input'
+		// 	);
+		// }
+		// sheltr pre territory;
 	}
+	//WIP################################################
+	//add to paths
+	makePathListeners(paths);
+	document.querySelector('#btnRestart').addEventListener('click', function() {
+		reset(secnodaryElmntIds, picklistIds);
+	});
+	reset(secnodaryElmntIds, picklistIds);
+	//SET DEFAULT BDM? OR OFFICE NUM?
+}
 
+function makePathListeners(paths) {
 	for (let path of paths) {
 		document.querySelector(path.initiatorId).addEventListener(path.eventType, (e) => {
 			//if country, search for country
@@ -309,7 +329,7 @@ function initiate(paths, reps) {
 					reps.filter((rep) => {
 						return rep.countries.includes(slctdOptn);
 					})[0];
-				setrep(activeRep);
+				setRepCardValues(activeRep);
 			}
 
 			if (mode === path.routeMode) {
@@ -319,11 +339,6 @@ function initiate(paths, reps) {
 			mode = path.setMode || mode;
 		});
 	}
-	document.querySelector('#btnRestart').addEventListener('click', function() {
-		reset(secnodaryElmntIds, picklistIds);
-	});
-	reset(secnodaryElmntIds, picklistIds);
-	//SET DEFAULT BDM? OR OFFICE NUM?
 }
 
 //add arraykeys array as args, and try to make this formula run only once through reps array,
@@ -379,4 +394,17 @@ function makeCntrsWthTrrtrs(reps, cntrsWthTrrtrs) {
 	for (key of Object.keys(tempObj)) {
 		cntrsWthTrrtrs.push({ [key]: tempObj[key] });
 	}
+}
+
+function makeNewPath(initiatorId, hideElement, showElement, setMode, routeMode, eventType, country) {
+	let newPath = {
+		initiatorId,
+		hideElement,
+		showElement,
+		setMode,
+		routeMode,
+		eventType,
+		country
+	};
+	pathways.push(newPath);
 }

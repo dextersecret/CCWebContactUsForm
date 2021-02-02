@@ -10,6 +10,9 @@
 h2 {
 	color: whitesmoke;
 }
+h3 {
+	color: whitesmoke;
+}
 p {
 	color: whitesmoke;
 }
@@ -23,8 +26,13 @@ p {
 	background-color: teal;
 	float: left;
 }
-.ccButton {
+.ccbutton {
 	/* s */
+	background-color: rgb(0, 197, 223);
+	color: whitesmoke;
+	border: 5px solid white;
+	margin: 10px;
+	font-size: large;
 }
 .mypicklist {
 	margin-left: 30%;
