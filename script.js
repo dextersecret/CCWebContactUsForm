@@ -74,7 +74,7 @@ const pathways = [
 		hideElement: secnodaryElmntIds.countryPageId,
 		showElement: secnodaryElmntIds.ccRepPageId,
 
-		routeModes: [ 'material', 'shelters', 'partner', 'artist' ],
+		routeModes: [ 'material', 'partner', 'artist', 'other' ],
 		eventType: 'input'
 	},
 	//2 country-> territory picklist
@@ -102,7 +102,7 @@ const pathways = [
 		showElement: secnodaryElmntIds.shltrsOtherPageId,
 		routeModes: [ 'shelters' ],
 		eventType: 'input'
-	}
+	},
 	//3.1 Territory -> Shelter (USA)
 	// {
 	// 	initiatorId: '#' + territoryPicklstId,
@@ -115,13 +115,13 @@ const pathways = [
 	// 4 - design
 
 	//#################make UK, initiator = territoryPicklist
-	// {
-	// 	initiatorId: '#' + countryPicklstId,
-	// 	hideElement: secnodaryElmntIds.countryPageId,
-	// 	showElement: secnodaryElmntIds.artistPageId,
-	// 	routeModes: ['artist'],
-	// 	eventType: 'input'
-	// }
+	{
+		initiatorId: '#' + countryPicklstId,
+		hideElement: secnodaryElmntIds.countryPageId,
+		showElement: secnodaryElmntIds.artistPageId,
+		routeModes: [ 'artist', 'United Kingdom' ],
+		eventType: 'input'
+	}
 ];
 const reps = [
 	{
@@ -328,21 +328,19 @@ function makePathListeners(paths) {
 			let slctdOptn = e.target.value;
 			console.log('e:', slctdOptn);
 
-			if (activeEvtValues.includes(slctdOptn)) {
+			if (activeEvtValues.includes(slctdOptn) && !mode.includes(slctdOptn)) {
 				mode.push(slctdOptn);
-				//find in raps by e.target.id
-
-				// update activeRep
-				//###############LATER
-				// activeRep =
-				// 	reps.filter((rep) => {
-				// 		return rep.territories.includes(slctdOptn);
-				// 	})[0] ||
-				// 	reps.filter((rep) => {
-				// 		return rep.countries.includes(slctdOptn);
-				// 	})[0];
-				// setRepCardValues(activeRep);
 			}
+			// update activeRep
+			//###############LATER
+			// activeRep =
+			// 	reps.filter((rep) => {
+			// 		return rep.territories.includes(slctdOptn);
+			// 	})[0] ||
+			// 	reps.filter((rep) => {
+			// 		return rep.countries.includes(slctdOptn);
+			// 	})[0];
+			// setRepCardValues(activeRep);
 
 			if (
 				mode.every((md) => {
