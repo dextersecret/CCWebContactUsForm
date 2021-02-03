@@ -10,13 +10,13 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
 
     <div id="contr" class="container">
       <section id="mySection">
-        <button id="btnRestart"><< Back</button><br>
         <div id="startPage">
             <h2>CONTACT US ABOUT:</h2>
               <button id="btnMat" class="ccbutton" value="material">CONCRETE CANVAS MATERIAL</button><br>
@@ -37,19 +37,32 @@
           <button id="btnOthr1" class="ccbutton" value="other1">OTHER</button>
         </div>
         <div id="otherPage2">
-          <p>PLEASE EMAIL TO</p>
-          <p>OR CALL US ON</p>
+          <h2>PLEASE CONTACT UK HEAD OFFICE</h2>
+          <p>FOR GENERAL ENQUIRIES</p>
+          <p>PLEASE EMAIL US ON: info@concretecanvas.com</p>
+          <p>OR CALL US ON: +44 (0) 345 680 1908</p>
+          <a href="https://www.concretecanvas.com/wp-content/uploads/2019/12/CC-Directions-Document.pdf"><button class="ccbutton" value="info">DOWNLOAD DIRECTIONS</button></a><br>          
         </div>
         <div id="ccRepPage">
-          <h2>YOUR POINT OF CONTACT IS:</h2>
-          <p id="repname"></p>
-          <p id="reptitle"></p>
-          <p id="repphone"></p>
-          <p id="repemail"></p>
-          <img id="repimage"></img>
+          <h2>YOUR POINT OF CONTACT IS:</h2><BR>
+          <div class="row">
+            
+            <div class="col">
+              <img id="repimage" class="img-fluid" src="https://t4.ftcdn.net/jpg/02/22/39/63/360_F_222396357_KlP0TQwV3X1U6rJWzlLcIpJ7ZLpxGcQR.jpg"></img>
+            </div>
+            <div class="col">
+              <p id="repname" class="textleft"></p>
+              <p id="reptitle" class="textleft"></p>
+              <p id="repphone" class="textleft"></p>
+              <p id="repemail" class="textleft"></p>
+              <p class="textleft"><strong>Short Bio:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel magni non inventore rerum aliquam quam asperiores praesentium officiis iusto fugit. Recusandae facere doloremque quia ipsam blanditiis, itaque cumque officia ipsum!</p>
+            </div>
+          </div>
         </div>
         <div id="shltrsUsaPage">
-          <h2>PLEASE CONTACT COMBAT CONCRETE</h2>
+          <h2>PLEASE CONTACT OUR DISTRIBUTOR</h2>
+          <p>Combat Concrete.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum, enim.</p>          
         </div>
         <div id="shltrsOtherPage">
           <h2>STANDATD SHELTER REPLY</h2>
@@ -57,13 +70,17 @@
         </div>
         <div id="artistPage">
           <h2>ARTIST ENQUIRIES</h2>
-          <h3>UK: Self Service request form</h3>
+          <a><button class="ccbutton" value="info">SELF SERVICE REQUEST FORM</button></a><br>          
+
         </div>
 
       </section>
+      <button id="btnRestart"><< Back</button><br>
     </div>
     
     <script src="script.js" async defer></script>
-
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>

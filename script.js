@@ -12,7 +12,6 @@ const activeEvtValues = [
 	'United States',
 	'United Kingdom'
 ];
-// const territoryPicklstId = 'territories';
 const secnodaryElmntIds = {
 	countryPageId: '#countryPage',
 	otherPage1Id: '#otherPage1',
@@ -21,7 +20,6 @@ const secnodaryElmntIds = {
 	shltrsUsaPageId: '#shltrsUsaPage',
 	shltrsOtherPageId: '#shltrsOtherPage',
 	artistPageId: '#artistPage'
-	// territoryPicklstId: '#' + territoryPicklstId
 };
 const pathways = [
 	{
@@ -29,6 +27,7 @@ const pathways = [
 		hideElement: primaryElementId,
 		showElement: secnodaryElmntIds.countryPageId,
 		routeModes: [ 'material' ],
+		restrictRoutes: [],
 		eventType: 'click'
 	},
 	{
@@ -36,6 +35,7 @@ const pathways = [
 		hideElement: primaryElementId,
 		showElement: secnodaryElmntIds.countryPageId,
 		routeModes: [ 'shelters' ],
+		restrictRoutes: [],
 		eventType: 'click'
 	},
 	{
@@ -43,6 +43,7 @@ const pathways = [
 		hideElement: primaryElementId,
 		showElement: secnodaryElmntIds.countryPageId,
 		routeModes: [ 'artist' ],
+		restrictRoutes: [],
 		eventType: 'click'
 	},
 	{
@@ -50,6 +51,7 @@ const pathways = [
 		hideElement: primaryElementId,
 		showElement: secnodaryElmntIds.otherPage1Id,
 		routeModes: [ 'other' ],
+		restrictRoutes: [],
 		eventType: 'click'
 	},
 	{
@@ -57,6 +59,7 @@ const pathways = [
 		hideElement: secnodaryElmntIds.otherPage1Id,
 		showElement: secnodaryElmntIds.otherPage2Id,
 		routeModes: [ 'other', 'other1' ],
+		restrictRoutes: [],
 		eventType: 'click'
 	},
 	{
@@ -64,79 +67,90 @@ const pathways = [
 		hideElement: secnodaryElmntIds.otherPage1Id,
 		showElement: secnodaryElmntIds.countryPageId,
 		routeModes: [ 'other', 'partner' ],
+		restrictRoutes: [],
 		eventType: 'click'
 	},
-
-	// country picklist shows postcode picklist if USA and UK
-	//1: country -> BDM
 	{
 		initiatorId: '#' + countryPicklstId,
 		hideElement: secnodaryElmntIds.countryPageId,
 		showElement: secnodaryElmntIds.ccRepPageId,
-
 		routeModes: [ 'material', 'partner', 'artist', 'other' ],
+		restrictRoutes: [ 'United States', 'United Kingdom', 'design' ],
 		eventType: 'input'
 	},
-	//2 country-> territory picklist
-	// {
-	// 	initiatorId: '#' + countryPicklstId,
-	// 	hideElement: '#' + countryPicklstId,
-	// 	showElement: territoryPicklstId,
-	//
-	// 	routeModes: 'material',
-	// 	eventType: 'input'
-	// },
-	// //1.2 territory -> BDM
-	// {
-	// 	initiatorId: '#' + territoryPicklstId,
-	// 	hideElement: secnodaryElmntIds.countryPageId,
-	// 	showElement: secnodaryElmntIds.ccRepPageId,
-	//
-	// 	routeModes: 'material',
-	// 	eventType: 'input'
-	// },
-	//3 Country -> Shelter (Other)
 	{
 		initiatorId: '#' + countryPicklstId,
 		hideElement: secnodaryElmntIds.countryPageId,
 		showElement: secnodaryElmntIds.shltrsOtherPageId,
-		routeModes: [ 'shelters' ],
+		routeModes: [ 'shelters', 'United Kingdom' ],
+		restrictRoutes: [ 'United States' ],
 		eventType: 'input'
 	},
-	//3.1 Territory -> Shelter (USA)
-	// {
-	// 	initiatorId: '#' + territoryPicklstId,
-	// 	hideElement: secnodaryElmntIds.countryPageId,
-	// 	showElement: secnodaryElmntIds.shltrsOtherPageId,
-	//
-	// 	routeModes: 'shelters',
-	// 	eventType: 'input'
-	// },
-	// 4 - design
-
-	//#################make UK, initiator = territoryPicklist
 	{
 		initiatorId: '#' + countryPicklstId,
+		hideElement: '#' + countryPicklstId,
+		showElement: '#unitedkingdom',
+		routeModes: [ 'United Kingdom', 'material', 'partner', 'artist', 'other' ],
+		restrictRoutes: [],
+		eventType: 'input'
+	},
+	{
+		initiatorId: '#' + countryPicklstId,
+		hideElement: '#' + countryPicklstId,
+		showElement: '#unitedstates',
+		routeModes: [ 'United States', 'material', 'partner', 'artist', 'other', 'shelters' ],
+		restrictRoutes: [],
+		eventType: 'input'
+	},
+
+	{
+		initiatorId: '#unitedkingdom',
 		hideElement: secnodaryElmntIds.countryPageId,
 		showElement: secnodaryElmntIds.artistPageId,
 		routeModes: [ 'artist', 'United Kingdom' ],
+		restrictRoutes: [],
+		eventType: 'input'
+	},
+	{
+		initiatorId: '#unitedkingdom',
+		hideElement: secnodaryElmntIds.countryPageId,
+		showElement: secnodaryElmntIds.ccRepPageId,
+		routeModes: [],
+		restrictRoutes: [ 'artist' ],
+		eventType: 'input'
+	},
+
+	{
+		initiatorId: '#unitedstates',
+		hideElement: secnodaryElmntIds.countryPageId,
+		showElement: secnodaryElmntIds.shltrsUsaPageId,
+		routeModes: [ 'shelters', 'United States' ],
+		restrictRoutes: [],
+		eventType: 'input'
+	},
+	{
+		initiatorId: '#unitedstates',
+		hideElement: secnodaryElmntIds.countryPageId,
+		showElement: secnodaryElmntIds.ccRepPageId,
+		routeModes: [],
+		restrictRoutes: [ 'shelters' ],
 		eventType: 'input'
 	}
 ];
 const reps = [
 	{
 		name: 'Phill Greer',
-		title: 'Test',
+		title: 'Title',
 		countries: [ 'United States' ],
-		territories: [ 'TX', 'CA' ],
+		territories: [ 'TX', 'CA', 'OH', 'MN' ],
 		phone: '123456789',
 		email: 'phill.greer@concretecanvas.com',
 		photoUrl: ''
 	},
 	{
 		name: 'Darren Hughes',
-		title: 'Test',
-		countries: [ 'India', 'Russian Federation' ],
+		title: 'Title',
+		countries: [ 'India', 'Russian Federation', 'Bangladesh' ],
 		territories: [],
 		phone: '123456789',
 		email: 'darren.hughes@concretecanvas.com',
@@ -144,7 +158,7 @@ const reps = [
 	},
 	{
 		name: 'Luis Rego',
-		title: 'Test',
+		title: 'Title',
 		countries: [ 'Brazil', 'Chile' ],
 		territories: [],
 		phone: '123456789',
@@ -153,7 +167,7 @@ const reps = [
 	},
 	{
 		name: 'Samer Hasan',
-		title: 'Test',
+		title: 'Title',
 		countries: [],
 		territories: [],
 		phone: '123456789',
@@ -162,7 +176,7 @@ const reps = [
 	},
 	{
 		name: 'Simon Lester',
-		title: 'Test',
+		title: 'Title',
 		countries: [],
 		territories: [],
 		phone: '123456789',
@@ -171,7 +185,7 @@ const reps = [
 	},
 	{
 		name: 'Nick Kastoumis',
-		title: 'Test',
+		title: 'Title',
 		countries: [],
 		territories: [],
 		phone: '123456789',
@@ -180,7 +194,7 @@ const reps = [
 	},
 	{
 		name: 'Michael Chong',
-		title: 'Test',
+		title: 'Title',
 		countries: [],
 		territories: [],
 		phone: '123456789',
@@ -189,7 +203,7 @@ const reps = [
 	},
 	{
 		name: 'Mark Griffiths',
-		title: 'Test',
+		title: 'Title',
 		countries: [],
 		territories: [],
 		phone: '123456789',
@@ -198,7 +212,7 @@ const reps = [
 	},
 	{
 		name: 'Flavio Cosma',
-		title: 'Test',
+		title: 'Title',
 		countries: [],
 		territories: [],
 		phone: '123456789',
@@ -207,8 +221,17 @@ const reps = [
 	},
 	{
 		name: 'Ryan McKeever',
-		title: 'Test',
+		title: 'Title',
 		countries: [ 'United Kingdom' ],
+		territories: [ 'BT', 'G' ],
+		phone: '123456789',
+		email: 'ryan.mckeever@concretecanvas.com',
+		photoUrl: ''
+	},
+	{
+		name: 'Ryan McKeever',
+		title: 'Title',
+		countries: [ 'Ireland' ],
 		territories: [],
 		phone: '123456789',
 		email: 'ryan.mckeever@concretecanvas.com',
@@ -216,25 +239,25 @@ const reps = [
 	},
 	{
 		name: 'Luke Valvona',
-		title: 'Test',
+		title: 'Title',
 		countries: [ 'United Kingdom' ],
-		territories: [ 'CB', 'OF' ],
+		territories: [ 'PE', 'OX' ],
 		phone: '123456789',
 		email: 'luke.valvona@concretecanvas.com',
 		photoUrl: ''
 	},
 	{
 		name: 'Gavin Adams',
-		title: 'Test',
+		title: 'Title',
 		countries: [ 'United Kingdom' ],
-		territories: [ 'BM', 'NN' ],
+		territories: [ 'B', 'LE' ],
 		phone: '123456789',
 		email: 'gavin.adams@concretecanvas.com',
 		photoUrl: ''
 	},
 	{
 		name: 'Laurie Cummings',
-		title: 'Test',
+		title: 'Title',
 		countries: [ 'United Kingdom' ],
 		territories: [ 'CF', 'SA' ],
 		phone: '123456789',
@@ -245,10 +268,10 @@ const reps = [
 const cntrsWthTrrtrs = [];
 const picklistIds = [];
 let activeRep = {
-	name: 'Name',
-	title: 'ttl',
-	phone: 'phone',
-	email: 'email',
+	name: '',
+	title: '',
+	phone: '+44 (0) 345 680 1908',
+	email: 'info@concretecanvas.com',
 	photoUrl: 'photo'
 };
 
@@ -265,8 +288,6 @@ function reset(els, picklistIds) {
 		myPcklst.selectedIndex = 0;
 		myPcklst.style.display = lst.defaultdisplay;
 	});
-	// let ctrPcklst = document.querySelector('#' + countryPicklstId);
-	// showEl(ctrPcklst);
 	mode = [];
 }
 function setRepCardValues(rep) {
@@ -274,7 +295,7 @@ function setRepCardValues(rep) {
 	document.querySelector('#reptitle').innerText = rep.title;
 	document.querySelector('#repphone').innerText = rep.phone;
 	document.querySelector('#repemail').innerText = rep.email;
-	document.querySelector('#repimage').setAttribute('src', rep.photoUrl);
+	// document.querySelector('#repimage').setAttribute('src', rep.photoUrl);
 }
 
 function hideEl(el) {
@@ -287,87 +308,88 @@ function showEl(el) {
 function initiate(paths, reps) {
 	makeCntrsWthTrrtrs(reps, cntrsWthTrrtrs);
 
-	picklistMaker(reps, countryPicklstId, 'block'); //making countries pcklst
-	// picklistMaker(reps, territoryPicklstId);
-	//WIP################################################
+	picklistMaker(reps, countryPicklstId, 'block', 'SELECT COUNTRY');
 	for (cntr of cntrsWthTrrtrs) {
-		//making territories picklists
 		let objId = Object.keys(cntr)[0];
-		picklistMaker(cntrsWthTrrtrs, objId, 'none');
-		// for (route of routesToReps) {
-		// 	//1 - pre path
-		// 	makeNewPath('#' + countryPicklstId, '#' + countryPicklstId, '#' + objId, '', route, 'input');
-		// 	//2 - post path
-		// 	makeNewPath(
-		// 		'#' + objId,
-		// 		secnodaryElmntIds.countryPageId,
-		// 		secnodaryElmntIds.ccRepPageId,
-		// 		'',
-		// 		route,
-		// 		'input'
-		// 	);
-		// }
-		// sheltr pre territory;
+		picklistMaker(cntrsWthTrrtrs, objId, 'none', 'POST CODE / STATE');
 	}
-	// UK [material, partner, artist]
-	// US [material, partner, design]
-
-	//WIP################################################
-	//add to paths
 	makePathListeners(paths);
 	document.querySelector('#btnRestart').addEventListener('click', function() {
 		reset(secnodaryElmntIds, picklistIds);
 	});
 	reset(secnodaryElmntIds, picklistIds);
-	//SET DEFAULT BDM? OR OFFICE NUM?
 }
 
 function makePathListeners(paths) {
 	for (let path of paths) {
 		document.querySelector(path.initiatorId).addEventListener(path.eventType, (e) => {
 			let slctdOptn = e.target.value;
-			console.log('e:', slctdOptn);
-
-			if (activeEvtValues.includes(slctdOptn) && !mode.includes(slctdOptn)) {
+			if (!mode.includes(slctdOptn) && activeEvtValues.includes(slctdOptn)) {
 				mode.push(slctdOptn);
 			}
-			// update activeRep
-			//###############LATER
-			// activeRep =
-			// 	reps.filter((rep) => {
-			// 		return rep.territories.includes(slctdOptn);
-			// 	})[0] ||
-			// 	reps.filter((rep) => {
-			// 		return rep.countries.includes(slctdOptn);
-			// 	})[0];
-			// setRepCardValues(activeRep);
-
 			if (
+				picklistIds.some((el) => {
+					return el.id == e.target.id;
+				})
+			) {
+				activeRep =
+					reps.filter((rep) => {
+						return rep.territories.includes(slctdOptn);
+					})[0] ||
+					reps.filter((rep) => {
+						return rep.countries.includes(slctdOptn);
+					})[0];
+				setRepCardValues(activeRep);
+			}
+			if (
+				path.restrictRoutes.length > 0 &&
+				path.routeModes.length == 0 &&
+				!mode.some((md) => {
+					return path.restrictRoutes.includes(md);
+				})
+			) {
+				console.log('condition 1');
+				hideEl(document.querySelector(path.hideElement));
+				showEl(document.querySelector(path.showElement));
+			} else if (
+				path.restrictRoutes.length == 0 &&
+				path.routeModes.length > 0 &&
 				mode.every((md) => {
 					return path.routeModes.includes(md);
 				})
 			) {
+				console.log('condition 2');
+				hideEl(document.querySelector(path.hideElement));
+				showEl(document.querySelector(path.showElement));
+			} else if (
+				path.restrictRoutes.length > 0 &&
+				!mode.some((md) => {
+					return path.restrictRoutes.includes(md);
+				}) &&
+				(path.routeModes.length > 0 &&
+					mode.every((md) => {
+						return path.routeModes.includes(md);
+					}))
+			) {
+				console.log('condition 3');
 				hideEl(document.querySelector(path.hideElement));
 				showEl(document.querySelector(path.showElement));
 			}
 		});
 	}
 }
-
-//add arraykeys array as args, and try to make this formula run only once through reps array,
-//creating 3 picklists: Countries, UK(territories), US(territories)
-function picklistMaker(objs, arrayKey, display) {
+function picklistMaker(objs, arrayKey, display, defaultText) {
 	picklistIds.push({ id: arrayKey, defaultdisplay: display });
 	const countrypg = document.querySelector(secnodaryElmntIds.countryPageId);
 	const select = document.createElement('select');
 	select.setAttribute('id', arrayKey);
-	select.setAttribute('class', 'mypicklist');
+	select.setAttribute('class', 'form-control form-control-lg mypicklist');
 
 	countrypg.append(select);
 	const newPicklist = document.querySelector('#' + arrayKey);
 	let blankOption = document.createElement('option');
 	blankOption.setAttribute('value', '');
-	blankOption.innerText = 'PLEASE SELECT';
+	blankOption.innerText = defaultText;
 	newPicklist.append(blankOption);
 	let chckDuplicatSet = new Set();
 
@@ -409,15 +431,15 @@ function makeCntrsWthTrrtrs(reps, cntrsWthTrrtrs) {
 	}
 }
 
-function makeNewPath(initiatorId, hideElement, showElement, setMode, routeModes, eventType, country) {
+function makeNewPath(initiatorId, hideElement, showElement, routeModes, eventType, country, restrictRoutes) {
 	let newPath = {
 		initiatorId,
 		hideElement,
 		showElement,
-		setMode,
 		routeModes,
 		eventType,
-		country
+		country,
+		restrictRoutes
 	};
 	pathways.push(newPath);
 }

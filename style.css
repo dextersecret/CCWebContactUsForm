@@ -1,14 +1,16 @@
 #mySection {
-	width: 50%;
-	padding: 50px 0;
+	/* width: 50%; */
+	padding: 50px;
 	text-align: center;
-	background-color: rgb(0, 197, 223);
+	background-color: #00b0ed;
 	margin-top: 20px;
 	font-family: Arial, Helvetica, sans-serif;
+	/* height: 550px; */
 	/* font-family: Verdana, Geneva, Tahoma, sans-serif; */
 }
 h2 {
 	color: whitesmoke;
+	margin-bottom: 20px;
 }
 h3 {
 	color: whitesmoke;
@@ -23,12 +25,18 @@ p {
 	display: block;
 }
 #btnRestart {
-	background-color: teal;
-	float: left;
+	background-color: rgb(0, 197, 223);
+	/* float: left; */
+	color: whitesmoke;
+	border: 5px solid white;
+	margin: 3px;
+	padding: 10px;
+	font-size: small;
 }
 .ccbutton {
 	/* s */
-	background-color: rgb(0, 197, 223);
+	/* background-color: rgb(0, 197, 223); */
+	background-color: #00b0ed;
 	color: whitesmoke;
 	border: 5px solid white;
 	margin: 10px;
@@ -37,5 +45,12 @@ p {
 	width: 80%;
 }
 .mypicklist {
-	margin-left: 30%;
+	/* width: 80%; */
+}
+.textleft {
+	text-align: left;
+}
+#repimage {
+	/* height: 250px; */
+	text-align: right;
 }
