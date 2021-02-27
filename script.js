@@ -145,7 +145,7 @@ const reps = [
 		territories: [ 'TX', 'CA', 'OH', 'MN' ],
 		phone: '123456789',
 		email: 'phill.greer@concretecanvas.com',
-		photoUrl: ''
+		photoUrl: 'Phill'
 	},
 	{
 		name: 'Darren Hughes',
@@ -226,7 +226,7 @@ const reps = [
 		territories: [ 'BT', 'G' ],
 		phone: '123456789',
 		email: 'ryan.mckeever@concretecanvas.com',
-		photoUrl: ''
+		photoUrl: 'Ryan'
 	},
 	{
 		name: 'Ryan McKeever',
@@ -235,7 +235,7 @@ const reps = [
 		territories: [],
 		phone: '123456789',
 		email: 'ryan.mckeever@concretecanvas.com',
-		photoUrl: ''
+		photoUrl: 'Ryan'
 	},
 	{
 		name: 'Luke Valvona',
@@ -244,7 +244,7 @@ const reps = [
 		territories: [ 'PE', 'OX' ],
 		phone: '123456789',
 		email: 'luke.valvona@concretecanvas.com',
-		photoUrl: ''
+		photoUrl: 'Luke'
 	},
 	{
 		name: 'Gavin Adams',
@@ -253,7 +253,7 @@ const reps = [
 		territories: [ 'B', 'LE' ],
 		phone: '123456789',
 		email: 'gavin.adams@concretecanvas.com',
-		photoUrl: ''
+		photoUrl: 'Gavin'
 	},
 	{
 		name: 'Laurie Cummings',
@@ -262,7 +262,7 @@ const reps = [
 		territories: [ 'CF', 'SA' ],
 		phone: '123456789',
 		email: 'laurie.cummings@concretecanvas.com',
-		photoUrl: ''
+		photoUrl: 'Laurie'
 	}
 ];
 const cntrsWthTrrtrs = [];
@@ -272,7 +272,7 @@ let activeRep = {
 	title: '',
 	phone: '+44 (0) 345 680 1908',
 	email: 'info@concretecanvas.com',
-	photoUrl: 'photo'
+	photoUrl: 'blank'
 };
 
 initiate(pathways, reps);
@@ -295,7 +295,7 @@ function setRepCardValues(rep) {
 	document.querySelector('#reptitle').innerText = rep.title;
 	document.querySelector('#repphone').innerText = rep.phone;
 	document.querySelector('#repemail').innerText = rep.email;
-	// document.querySelector('#repimage').setAttribute('src', rep.photoUrl);
+	document.querySelector('#repimage').setAttribute('src', 'images/' + (rep.photoUrl || 'blank') + '.jpg');
 }
 
 function hideEl(el) {
