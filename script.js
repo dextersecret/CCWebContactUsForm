@@ -378,6 +378,7 @@ function makePathListeners(paths) {
 		});
 	}
 }
+
 function picklistMaker(objs, arrayKey, display, defaultText) {
 	picklistIds.push({ id: arrayKey, defaultdisplay: display });
 	const countrypg = document.querySelector(secnodaryElmntIds.countryPageId);
@@ -392,6 +393,7 @@ function picklistMaker(objs, arrayKey, display, defaultText) {
 	blankOption.innerText = defaultText;
 	newPicklist.append(blankOption);
 	let chckDuplicatSet = new Set();
+	var listToSort = [];
 
 	objs.forEach((obj) => {
 		if (obj[arrayKey]) {
@@ -400,10 +402,14 @@ function picklistMaker(objs, arrayKey, display, defaultText) {
 					let myOption = document.createElement('option');
 					myOption.setAttribute('value', el);
 					myOption.innerText = el;
-					newPicklist.append(myOption);
+					listToSort.push(myOption);
 				}
 				chckDuplicatSet.add(el);
 			});
+			listToSort.sort((a, b) => (a.innerText > b.innerText ? 1 : -1));
+			for (optn of listToSort) {
+				newPicklist.append(optn);
+			}
 		}
 	});
 }
