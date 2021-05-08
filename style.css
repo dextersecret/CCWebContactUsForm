@@ -1,7 +1,7 @@
 #test {
 	height: 200px;
 	width: 200px;
-	background-image: url("/images/ccmap.png");
+	/* background-image: url("/images/ccmap.png"); */
 	/* position: relative; */
 	/* z-index: 2; */
 }
@@ -20,22 +20,27 @@
 	z-index: 2;
 }
 #bgimage {
-	height: 300px;
+	/* height: auto; */
 	width: 100%;
-	background-image: url("images/ccmap.png");
+	/* background-image: url("images/ccmap.png"); */
 	position: absolute;
 	z-index: 1;
 }
 
 h2 {
-	color: whitesmoke;
+	/* color: whitesmoke; */
+	color: din-2014, sans-serif;
 	margin-bottom: 20px;
 }
 h3 {
-	color: whitesmoke;
+	/* color: whitesmoke; */
+
+	color: din-2014, sans-serif;
 }
 p {
-	color: whitesmoke;
+	/* color: whitesmoke; */
+
+	color: din-2014, sans-serif;
 }
 .hidden {
 	display: none;
