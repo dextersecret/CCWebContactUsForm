@@ -51,11 +51,11 @@ p {
 #btnRestart {
 	background-color: rgb(0, 197, 223);
 	/* float: left; */
-	color: whitesmoke;
-	border: 5px solid white;
-	margin: 3px;
-	padding: 10px;
-	font-size: small;
+	/* color: whitesmoke; */
+	/* border: 5px solid white; */
+	/* margin: 3px; */
+	/* padding: 10px; */
+	/* font-size: small; */
 
 	position: relative;
 	z-index: 2;
@@ -75,4 +75,11 @@ p {
 #repimage {
 	width: 300px;
 	text-align: right;
+}
+.width80 {
+	width: 80%;
+}
+.mymargins {
+	margin: 10px;
+	padding: 10px;
 }

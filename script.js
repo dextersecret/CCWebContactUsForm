@@ -384,7 +384,7 @@ function picklistMaker(objs, arrayKey, display, defaultText) {
 	const countrypg = document.querySelector(secnodaryElmntIds.countryPageId);
 	const select = document.createElement('select');
 	select.setAttribute('id', arrayKey);
-	select.setAttribute('class', 'form-control form-control-lg mypicklist');
+	select.setAttribute('class', 'form-control form-control-lg mypicklist width80');
 
 	countrypg.append(select);
 	const newPicklist = document.querySelector('#' + arrayKey);
