@@ -71,6 +71,12 @@ p {
 }
 .textleft {
 	text-align: left;
+	font-size: 1em;
+}
+.textleftName {
+	text-align: left;
+	font-size: 1.8em;
+	margin-bottom: 0;
 }
 #repimage {
 	width: 300px;
@@ -82,4 +88,14 @@ p {
 .mymargins {
 	margin: 10px;
 	padding: 10px;
+}
+body {
+	color: rgb(55, 104, 153);
+}
+#personacard {
+	background-color: rgba(240, 251, 255, 0.596);
+}
+.socialIcon {
+	/* width: 90px; */
+	height: 80px;
 }

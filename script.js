@@ -140,127 +140,127 @@ const pathways = [
 const reps = [
 	{
 		name: 'Phill Greer',
-		title: 'Title',
+		title: 'Business Development Manager',
 		countries: [ 'United States' ],
 		territories: [ 'TX', 'CA', 'OH', 'MN' ],
-		phone: '123456789',
+		phone: '+123-456-7890',
 		email: 'phill.greer@concretecanvas.com',
 		photoUrl: 'Phill'
 	},
 	{
 		name: 'Darren Hughes',
-		title: 'Title',
+		title: 'Business Development Manager',
 		countries: [ 'India', 'Russian Federation', 'Bangladesh' ],
 		territories: [],
-		phone: '123456789',
+		phone: '+123-456-7890',
 		email: 'darren.hughes@concretecanvas.com',
 		photoUrl: ''
 	},
 	{
 		name: 'Luis Rego',
-		title: 'Title',
+		title: 'Business Development Manager',
 		countries: [ 'Brazil', 'Chile' ],
 		territories: [],
-		phone: '123456789',
+		phone: '+123-456-7890',
 		email: 'luis.rego@concretecanvas.com',
 		photoUrl: ''
 	},
 	{
 		name: 'Samer Hasan',
-		title: 'Title',
+		title: 'Business Development Manager',
 		countries: [],
 		territories: [],
-		phone: '123456789',
+		phone: '+123-456-7890',
 		email: 'samer.hasan@concretecanvas.com',
 		photoUrl: ''
 	},
 	{
 		name: 'Simon Lester',
-		title: 'Title',
+		title: 'Business Development Manager',
 		countries: [],
 		territories: [],
-		phone: '123456789',
+		phone: '+123-456-7890',
 		email: 'simon.lester@concretecanvas.com',
 		photoUrl: ''
 	},
 	{
 		name: 'Nick Kastoumis',
-		title: 'Title',
+		title: 'Business Development Manager',
 		countries: [],
 		territories: [],
-		phone: '123456789',
+		phone: '+123-456-7890',
 		email: 'nick.kastoumis@concretecanvas.com',
 		photoUrl: ''
 	},
 	{
 		name: 'Michael Chong',
-		title: 'Title',
+		title: 'Business Development Manager',
 		countries: [],
 		territories: [],
-		phone: '123456789',
+		phone: '+123-456-7890',
 		email: 'michael.chong@concretecanvas.com',
 		photoUrl: ''
 	},
 	{
 		name: 'Mark Griffiths',
-		title: 'Title',
+		title: 'Business Development Manager',
 		countries: [],
 		territories: [],
-		phone: '123456789',
+		phone: '+123-456-7890',
 		email: 'mark.griffiths@concretecanvas.com',
 		photoUrl: ''
 	},
 	{
 		name: 'Flavio Cosma',
-		title: 'Title',
+		title: 'Business Development Manager',
 		countries: [],
 		territories: [],
-		phone: '123456789',
+		phone: '+123-456-7890',
 		email: 'flavio.cosma@concretecanvas.com',
 		photoUrl: ''
 	},
 	{
 		name: 'Ryan McKeever',
-		title: 'Title',
+		title: 'Business Development Manager',
 		countries: [ 'United Kingdom' ],
 		territories: [ 'BT', 'G' ],
-		phone: '123456789',
+		phone: '+123-456-7890',
 		email: 'ryan.mckeever@concretecanvas.com',
 		photoUrl: 'Ryan'
 	},
 	{
 		name: 'Ryan McKeever',
-		title: 'Title',
+		title: 'Business Development Manager',
 		countries: [ 'Ireland' ],
 		territories: [],
-		phone: '123456789',
+		phone: '+123-456-7890',
 		email: 'ryan.mckeever@concretecanvas.com',
 		photoUrl: 'Ryan'
 	},
 	{
 		name: 'Luke Valvona',
-		title: 'Title',
+		title: 'Business Development Manager',
 		countries: [ 'United Kingdom' ],
 		territories: [ 'PE', 'OX' ],
-		phone: '123456789',
+		phone: '+123-456-7890',
 		email: 'luke.valvona@concretecanvas.com',
 		photoUrl: 'Luke'
 	},
 	{
 		name: 'Gavin Adams',
-		title: 'Title',
+		title: 'Business Development Manager',
 		countries: [ 'United Kingdom' ],
 		territories: [ 'B', 'LE' ],
-		phone: '123456789',
+		phone: '+123-456-7890',
 		email: 'gavin.adams@concretecanvas.com',
 		photoUrl: 'Gavin'
 	},
 	{
 		name: 'Laurie Cummings',
-		title: 'Title',
+		title: 'Business Development Manager',
 		countries: [ 'United Kingdom' ],
 		territories: [ 'CF', 'SA' ],
-		phone: '123456789',
+		phone: '+123-456-7890',
 		email: 'laurie.cummings@concretecanvas.com',
 		photoUrl: 'Laurie'
 	}
