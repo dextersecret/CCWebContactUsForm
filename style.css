@@ -99,3 +99,7 @@ body {
 	/* width: 90px; */
 	height: 80px;
 }
+
+.socialIcon:hover {
+	height: 100px;
+}
